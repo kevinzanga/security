@@ -24,7 +24,7 @@ Guía de pruebas manuales para verificar que las defensas de seguridad del siste
    ```html
    <script>alert('XSS')</script>
    ```
-3. **Fijación de sesión:** Intentar usar cookies o tokens inválidos para acceder a `/welcome`.
+3. **Fijación de sesión:** Intentar usar cookies o tokens inválidos para acceder a `http://localhost:3000/welcome`.
 **Resultado esperado:**
 - Los inputs se rechazan o sanitizan.
 - No se ejecutan scripts maliciosos.
