@@ -1,75 +1,45 @@
-TESTS.md 🧪
+# 🛡 Proyecto Security frontend y backend
 
-      Guía de pruebas manuales para verificar que las defensas de seguridad del sistema funcionan correctamente.
+Este proyecto es un backend desarrollado con **Node.js**, **Express** y **SQLite** usando **Sequelize**, enfocado en la implementación de medidas de seguridad para prevenir ataques como **inyección SQL**, **XSS** y **fuerza bruta**.
 
-1. Acceso a pantalla de bienvenida sin sesión 🚫
-   Objetivo: Comprobar que un usuario no autenticado no puede acceder a /welcome.
-   Pasos:
-      Abrir el navegador en modo incógnito.
-      Intentar acceder a http://localhost:3000/welcome.
-   Resultado esperado:
-      El servidor responde con 401 Unauthorized.
-      No se muestra información de usuario.
-2. Intentos de inyección / XSS / fijación de sesión 🛡️
+---
 
-Objetivo: Verificar que entradas maliciosas no afecten el sistema.
+## 📋 Requisitos previos
 
-Pruebas:
+Antes de iniciar, asegúrate de tener instalado:
 
-Inyección SQL: Enviar al registro un username como
+- [Node.js](https://nodejs.org/) v18 o superior
+- [npm](https://www.npmjs.com/) (incluido con Node.js)
+- Git (para clonar el repositorio)
 
-{ "username": "admin';--", "password": "123456" }
+---
 
-XSS: Intentar registrar un username con código JS o HTML, por ejemplo:
+## 🚀 Instalación y ejecución local
 
-<script>alert('XSS')</script>
-
-Fijación de sesión: Intentar usar cookies o tokens inválidos para acceder a /welcome.
-
-Resultado esperado:
-
-Los inputs se rechazan o sanitizan.
-
-No se ejecutan scripts maliciosos.
-
-No se permite acceso a recursos protegidos.
-
-El log registra intentos, pero sin datos sensibles.
-
-3. Gestión correcta de errores ⚠️
-
-Objetivo: Verificar que los errores no expongan stack traces ni datos sensibles.
-
-Pasos:
-
-Forzar un error en el backend (por ejemplo, dejar campos vacíos en registro o login).
-
-Observar la respuesta del servidor y los logs.
-
-Resultado esperado:
-
-El cliente recibe mensajes genéricos (ej. "Error del servidor").
-
-No se muestran stack traces ni información de base de datos.
-
-Los logs internos registran detalles del error para auditoría.
-
-4. Cierre de sesión efectivo 🔑
-
-Objetivo: Confirmar que el logout elimina la sesión activa.
-
-Pasos:
-
-Iniciar sesión correctamente.
-
-Hacer logout desde la interfaz.
-
-Intentar acceder nuevamente a /welcome.
-
-Resultado esperado:
-
-Cookie de sesión eliminada.
-
-Acceso a /welcome responde con 401 Unauthorized.
-
-El log registra correctamente el evento de logout.
+1. **Clonar el repositorio**
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd <NOMBRE_DEL_PROYECTO>
+2. Instalar dependencias necesarias
+   npm install express bcryptjs jsonwebtoken cors cookie-parser sequelize sqlite3 express-rate-limit dotenv
+3. Iniciar el servidor
+   node server.js
+4. Servidor Disponible en: 
+   http://localhost:3000
+   
+##  🛡 Características de seguridad implementadas
+    Hash de contraseñas con bcryptjs.
+    Autenticación segura con JWT y expiración.
+    Rate limiting para prevenir ataques de fuerza bruta.
+    Validación de entradas en servidor y cliente.
+    Protección contra inyección SQL mediante Sequelize.
+    Sesiones seguras y manejo seguro de cookies.
+    Manejo centralizado de errores sin filtrar datos sensibles.
+##  📂 Estructura del proyecto
+        / (raíz)
+     ├── index.js          # Punto de entrada del servidor
+     ├── routes/           # Definición de rutas API
+     ├── models/           # Modelos de Sequelize
+     ├── middlewares/      # Middlewares de seguridad
+     ├── .env              # Variables de entorno (no se sube a GitHub)
+     └── README.md         # Documentación del proyecto
