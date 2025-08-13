@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro Seguro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Bienvenido !</h1>
+
+    <!-- --- Panel de autenticación con tabs --- -->
+    <div class="form-container">
+        <div class="tabs">
+            <button id="tab-login" class="active" onclick="switchTab('login')">Login</button>
+            <button id="tab-register" onclick="switchTab('register')">Registro</button>
+        </div>
+
+        <!-- --- Login --- -->
+        <div id="login-panel">
+            <input type="text" id="username" placeholder="Usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button onclick="login()">Iniciar sesión</button>
+        </div>
+
+        <!-- --- Registro --- -->
+        <div id="register-panel" style="display:none;">
+            <input type="text" id="reg-username" placeholder="Usuario">
+            <input type="password" id="reg-password" placeholder="Contraseña">
+            <button onclick="register()">Registrar</button>
+        </div>
+    </div>
+
+    <!-- --- Pantalla de bienvenida --- -->
+    <div class="form-container" id="welcome" style="display:none;">
+        <h2>Bienvenido</h2>
+        <p id="welcome-message"></p>
+        <button id="logout-btn" onclick="logout()">Cerrar sesión</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            showWelcome();
+        });
+    </script>
+</body>
+</html>
