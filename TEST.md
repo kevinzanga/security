@@ -8,6 +8,7 @@ Guía de pruebas manuales para verificar que las defensas de seguridad del siste
 **Pasos:**
 1. Abrir el navegador en modo incógnito.
 2. Intentar acceder a `http://localhost:3000/welcome`.
+
 **Resultado esperado:**
 - El servidor responde con **Unauthorized**.
 - No se muestra información de usuario.
@@ -39,6 +40,7 @@ Guía de pruebas manuales para verificar que las defensas de seguridad del siste
 **Pasos:**
 1. Forzar un error en el backend (por ejemplo, dejar campos vacíos en registro o login).
 2. Observar la respuesta del servidor y los logs.
+
 **Resultado esperado:**
 - El cliente recibe mensajes genéricos (ej. "Error del servidor").
 - No se muestran stack traces ni información de base de datos.
@@ -51,7 +53,8 @@ Guía de pruebas manuales para verificar que las defensas de seguridad del siste
 **Pasos:**
 1. Iniciar sesión correctamente.
 2. Hacer logout desde la interfaz.
-3. Intentar acceder nuevamente a `/welcome`.
+3. Intentar acceder nuevamente a `http://localhost:3000/welcome`.
+
 **Resultado esperado:**
 - Cookie de sesión eliminada.
 - Acceso a `/welcome` responde con **Unauthorized**.
