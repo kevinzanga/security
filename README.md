@@ -21,7 +21,7 @@ Antes de iniciar, asegúrate de tener instalado:
    git clone <URL_DEL_REPOSITORIO>
    cd <NOMBRE_DEL_PROYECTO>
 2. Instalar dependencias necesarias
-   npm install express bcryptjs jsonwebtoken cors cookie-parser sequelize sqlite3 express-rate-limit dotenv
+      npm install express bcryptjs jsonwebtoken cors cookie-parser sequelize sqlite3 express-rate-limit dotenv
 3. Iniciar el servidor
    node server.js
 4. Servidor Disponible en: 
